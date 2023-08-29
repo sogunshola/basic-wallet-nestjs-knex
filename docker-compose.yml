@@ -1,0 +1,58 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:5.7
+    platform: linux/amd64
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: lendsqr
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql:/var/lib/mysql
+    networks:
+      - api-network
+
+  redis:
+      image: redis:alpine
+      container_name: redis
+      restart: always
+      ports:
+        - 6379:6379
+      volumes:
+        - redis:/data
+      networks: 
+        - api-network
+  build:
+    build: .
+    container_name: api
+    restart: always
+    environment:
+      - REDIS_URL=redis://redis:6379
+    env_file:
+      - .env
+    depends_on:
+      - mysql
+      - redis
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/src/app
+    networks:
+      - api-network
+
+volumes:
+  mysql:
+   name: postgres-volume
+  redis:
+    driver: local
+
+networks:
+  api-network:
+
+
+    
