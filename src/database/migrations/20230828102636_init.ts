@@ -23,7 +23,7 @@ export async function up(knex: Knex): Promise<void> {
     .createTable("transactions", (table) => {
       table.increments("id");
       table.string("type").notNullable();
-      table.string("amount").notNullable();
+      table.float("amount").notNullable();
       table.string("status").notNullable();
       table.string("operation").notNullable();
       table.string("reference").notNullable();

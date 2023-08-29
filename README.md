@@ -1,73 +1,122 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+# FundTransfer Backend Documentation
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Welcome to the documentation for the FundTransfer backend code. This application allows users to create accounts, fund their accounts, transfer funds to other users, and withdraw funds. The backend is built using NestJS, KnexJS ORM, and MySQL database, with PayStack integration for funding and Docker support. This documentation provides a comprehensive guide to understanding, setting up, and running the backend application.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Table of Contents
 
-## Description
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Prerequisites](#prerequisites)
+- [Getting Started](#getting-started)
+  - [Installation](#installation)
+  - [Configuration](#configuration)
+  - [Database Setup](#database-setup)
+- [Usage](#usage)
+  - [Running Locally](#running-locally)
+  - [Running Tests](#running-tests)
+- [API Endpoints](#api-endpoints)
+- [ER Diagram](#er-diagram)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Features
 
-## Installation
+- User account creation
+- Account funding via PayStack
+- Funds transfer between user accounts
+- Withdrawal of funds from user accounts
+
+## Tech Stack
+
+- NestJS
+- KnexJS ORM
+- MySQL database
+- PayStack integration
+- Docker
+
+## Prerequisites
+
+- Node.js (version 16.X.X)
+- MySQL (version 5.X.)
+- Docker (if running with Docker)
+
+## Getting Started
+
+### Installation
+
+1. Clone this repository:
+
+   ```bash
+   git clone https://github.com/sogunshola/basic-wallet-nestjs-knex
+   ```
+
+2. Navigate into the cloned repository folder and install dependencies:
+
+   ```bash
+   cd basic-wallet-nestjs-knex
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   yarn install
+   ```
+
+### Configuration
+
+1. Rename `.env.example` to `.env` and configure environment variables:
+
+### Database Setup
+
+1. Create a MySQL database with the name specified in `.env`.
+
+2. Run database migrations:
+
+   ```bash
+   yarn knex migrate:latest
+   ```
+
+### Usage
+
+#### Running Locally
+
+Start the application locally:
 
 ```bash
-$ npm install
+yarn start:dev
 ```
 
-## Running the app
+Docker can also be used to run the application locally. Follow these steps:
+
+1. Build the Docker image:
+
+   ```bash
+   docker-compose up --build
+   ```
+
+2. Start the Docker container:
+
+   ```bash
+    docker-compose up
+   ```
+
+### Running Tests
+
+Run unit tests:
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+yarn test
 ```
 
-## Test
+### API Endpoints
 
-```bash
-# unit tests
-$ npm run test
+Explore the API endpoints and their documentation using Swagger:
 
-# e2e tests
-$ npm run test:e2e
+- **POST** `/api/auth/sign-up` - Create a new user account
+- **POST** `/api/wallet/fund` - Fund user's account via PayStack
+- **POST** `/api/wallet/transfer` - Transfer funds to another user's account
+- **POST** `/api/wallet/withdraw` - Withdraw funds from user's account
 
-# test coverage
-$ npm run test:cov
-```
+For more details and interactive testing, visit the Swagger documentation for the API http://localhost:3000/swagger.
 
-## Support
+## ER Diagram
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+![ER Diagram](./docs/er-diagram.png)

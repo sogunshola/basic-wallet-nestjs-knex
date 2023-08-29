@@ -11,24 +11,21 @@ const appName = env.appName;
 const port = env.port;
 
 async function bootstrap() {
-  // admin.initializeApp({
-  //   credential: admin.credential.cert(firebaseConfig as any),
-  // });
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix("api");
   app.enableCors();
   app.useGlobalFilters(new AllExceptionsFilter());
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
 
-  app.use(
-    "/swagger",
-    basicAuth({
-      challenge: true,
-      users: {
-        ["admin"]: env.docsPassword,
-      },
-    })
-  );
+  // app.use(
+  //   "/swagger",
+  //   basicAuth({
+  //     challenge: true,
+  //     users: {
+  //       ["admin"]: env.docsPassword,
+  //     },
+  //   })
+  // );
 
   const options = new DocumentBuilder()
     .setTitle(`${appName} API`)
