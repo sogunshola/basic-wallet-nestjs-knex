@@ -14,8 +14,8 @@ export class UsersService extends BaseService<User> {
 
   async checkDuplicate(user: Partial<User>) {
     const { email, phoneNumber } = user;
-    const isEmailExist = await (await this.repository).where({ email }).first();
-    const isTelephoneExist = await this.repository
+    const isEmailExist = await this.knex("users").where({ email }).first();
+    const isTelephoneExist = await this.knex("users")
       .where({ phoneNumber })
       .first();
 
