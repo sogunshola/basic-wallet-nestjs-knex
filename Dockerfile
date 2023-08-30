@@ -50,5 +50,5 @@ COPY --from=production /app/dist ./dist
 COPY --from=production /app/node_modules ./node_modules
 COPY package.json ./
 EXPOSE 3000
-RUN npm run knex:migrate:latest
+# RUN npm run knex:migrate:latest
 CMD ["npm", "run", "start:prod"]

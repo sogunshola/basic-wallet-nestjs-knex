@@ -19,8 +19,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "knex:migrate:latest": "knex --knexfile dist/knexfile.js migrate:latest --env development",
-    "knex:migrate:rollback": "knex --knexfile dist/knexfile.js migrate:rollback --env development"
+    "knex:migrate:latest": "knex --knexfile knexfile.js migrate:latest --env development",
+    "knex:migrate:rollback": "knex --knexfile knexfile.js migrate:rollback --env development"
   },
   "dependencies": {
     "@mithleshjs/knex-nest": "^2.2.0",

@@ -10,7 +10,7 @@ module.exports = {
     client: "mysql",
     connection: process.env.DB_URL,
     migrations: {
-      directory: "./database/migrations/",
+      directory: "./src/database/migrations/",
       tableName: "migrations",
     },
   },
