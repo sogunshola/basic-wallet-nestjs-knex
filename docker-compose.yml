@@ -16,28 +16,25 @@ services:
   #   networks:
   #     - api-network
 
-  redis:
-      image: redis:alpine
-      container_name: redis
-      restart: always
-      ports:
-        - 6379:6379
-      volumes:
-        - redis:/data
-      networks: 
-        - api-network
+  # redis:
+  #     image: redis:alpine
+  #     container_name: redis
+  #     restart: always
+  #     ports:
+  #       - 6379:6379
+  #     volumes:
+  #       - redis:/data
+  #     networks: 
+  #       - api-network
   build:
     build: .
     container_name: api
     restart: always
     environment:
-      - REDIS_URL=redis://redis:6379
+      # - REDIS_URL=redis://redis:6379
       # - DB_URL=mysql://root:password@mysql:3306/lendsqr
     env_file:
       - .env
-    depends_on:
-      # - mysql
-      - redis
     ports:
       - 3000:3000
     volumes:
