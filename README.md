@@ -2,6 +2,8 @@
 
 Welcome to the documentation for the FundTransfer backend code. This application allows users to create accounts, fund their accounts, transfer funds to other users, and withdraw funds. The backend is built using NestJS, KnexJS ORM, and MySQL database, with PayStack integration for funding and Docker support. This documentation provides a comprehensive guide to understanding, setting up, and running the backend application.
 
+## The google document with the proper documentation is [here](https://docs.google.com/document/d/19y0IOTDsuS31KVS17hYcabHsoq29nXQ0a7-BbH9c7QA/edit?usp=sharing)
+
 ## Table of Contents
 
 - [Features](#features)
