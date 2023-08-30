@@ -6,9 +6,8 @@ services:
     container_name: mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: lendsqr
-      MYSQL_USER: root
       MYSQL_PASSWORD: password
     ports:
       - 3306:3306
@@ -16,6 +15,20 @@ services:
       - mysql:/var/lib/mysql
     networks:
       - api-network
+  
+  # migration:
+  #   build: .
+  #   container_name: migration
+  #   restart: always
+  #   env_file:
+  #     - .env
+  #   depends_on:
+  #     - mysql
+  #   volumes:
+  #     - .:/usr/src/app
+  #   command: npm run knex migrate:latest
+  #   networks:
+  #     - api-network
 
   redis:
       image: redis:alpine
@@ -47,7 +60,7 @@ services:
 
 volumes:
   mysql:
-   name: postgres-volume
+   name: mysql-volume
   redis:
     driver: local
 
