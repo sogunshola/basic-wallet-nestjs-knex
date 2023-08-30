@@ -1,6 +1,6 @@
 // Update with your config settings.
 
-import { dbConfig } from "./src/config/db.config";
+import { dbConfig } from "./config/db.config";
 
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
