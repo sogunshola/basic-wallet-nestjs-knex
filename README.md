@@ -71,7 +71,7 @@ Welcome to the documentation for the FundTransfer backend code. This application
 2. Run database migrations:
 
    ```bash
-   yarn knex migrate:latest
+   yarn knex:migrate:latest
    ```
 
 ### Usage

@@ -8,7 +8,7 @@ export const dbConfig = {
     client: "mysql",
     connection: env.dbUrl,
     migrations: {
-      directory: "./src/database/migrations/",
+      directory: "../database/migrations/",
       tableName: "migrations",
     },
   },

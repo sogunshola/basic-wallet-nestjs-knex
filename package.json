@@ -19,18 +19,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "knex": "knex",
-    "knex:migrate:latest": "knex migrate:latest",
-    "knex:migrate:up": "knex migrate:up",
-    "knex:migrate:down": "knex migrate:down",
-    "knex:migrate:rollback": "knex migrate:rollback",
-    "knex:migrate:rollback:all": "knex migrate:rollback --all",
-    "knex:prod": "knex --knexfile dist/knexfile.js",
-    "knex:prod:migrate:latest": "npm run knex:prod migrate:latest",
-    "knex:prod:migrate:up": "npm run knex:prod migrate:up",
-    "knex:prod:migrate:down": "npm run knex:prod migrate:down",
-    "knex:prod:migrate:rollback": "npm run knex:prod migrate:rollback",
-    "knex:prod:migrate:rollback:all": "npm run knex:prod migrate:rollback --all"
+    "knex:migrate:latest": "knex --knexfile dist/knexfile.js migrate:latest --env development",
+    "knex:migrate:rollback": "knex --knexfile ./knexfile.ts migrate:rollback --env development"
   },
   "dependencies": {
     "@mithleshjs/knex-nest": "^2.2.0",
@@ -59,6 +49,7 @@
     "env-var": "^7.1.1",
     "express-basic-auth": "^1.2.1",
     "faker": "5.5.3",
+    "find-config": "^1.0.0",
     "firebase-admin": "^11.3.0",
     "knex": "^2.5.1",
     "memory-cache": "^0.2.0",

@@ -1,12 +1,19 @@
 // Update with your config settings.
 
-import { dbConfig } from "./src/config/db.config";
+require('dotenv').config({ path: require('find-config')('.env') });
 
 /**
  * @type { Object.<string, import("knex").Knex.Config> }
  */
 module.exports = {
-  development: dbConfig.config,
+  development: {
+    client: "mysql",
+    connection: process.env.DB_URL,
+    migrations: {
+      directory: "./database/migrations/",
+      tableName: "migrations",
+    },
+  },
 
   staging: {
     client: "postgresql",

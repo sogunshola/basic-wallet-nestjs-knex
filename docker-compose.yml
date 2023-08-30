@@ -15,20 +15,6 @@ services:
       - mysql:/var/lib/mysql
     networks:
       - api-network
-  
-  # migration:
-  #   build: .
-  #   container_name: migration
-  #   restart: always
-  #   env_file:
-  #     - .env
-  #   depends_on:
-  #     - mysql
-  #   volumes:
-  #     - .:/usr/src/app
-  #   command: npm run knex migrate:latest
-  #   networks:
-  #     - api-network
 
   redis:
       image: redis:alpine
