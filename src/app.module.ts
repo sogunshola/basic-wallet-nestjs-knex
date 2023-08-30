@@ -15,7 +15,7 @@ import { GlobalModule } from "./global.module";
 import { KnexModule } from "@mithleshjs/knex-nest";
 import { WalletModule } from "./modules/wallet/wallet.module";
 import { WebhooksModule } from "./modules/webhooks/webhooks.module";
-import { TransactionsModule } from './modules/transactions/transactions.module';
+import { TransactionsModule } from "./modules/transactions/transactions.module";
 const mg = require("nodemailer-mailgun-transport");
 
 @Module({

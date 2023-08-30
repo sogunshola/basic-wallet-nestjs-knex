@@ -34,8 +34,13 @@ export class WalletController {
     );
   }
 
-  @Post('withdraw')
-  withdrawFromWallet(@Body() withdrawFromWallet: WithdrawFromWalletDto, @CurrentUser() user: User) {
-    return resolveResponse(this.walletService.withdrawFund(withdrawFromWallet, user));
+  @Post("withdraw")
+  withdrawFromWallet(
+    @Body() withdrawFromWallet: WithdrawFromWalletDto,
+    @CurrentUser() user: User
+  ) {
+    return resolveResponse(
+      this.walletService.withdrawFund(withdrawFromWallet, user)
+    );
   }
 }

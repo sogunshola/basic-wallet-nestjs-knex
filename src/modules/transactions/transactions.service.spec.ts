@@ -40,7 +40,6 @@ describe("TransactionsService", () => {
   });
 
   describe("findUserTransactions", () => {
-
     it("should return user transactions", async () => {
       const user = {
         id: 1,
@@ -48,7 +47,10 @@ describe("TransactionsService", () => {
       tracker.on
         .select("transactions")
         .response([{ id: 1, userId: 1, amount: 100 }]);
-      const transactions = await service.findUserTransactions({} as any, user as any);
+      const transactions = await service.findUserTransactions(
+        {} as any,
+        user as any
+      );
       expect(transactions.list).toEqual([{ id: 1, userId: 1, amount: 100 }]);
       expect(transactions.pagination).toBeDefined();
       expect(transactions.pagination.currentPage).toEqual(1);

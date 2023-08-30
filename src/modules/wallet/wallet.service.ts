@@ -15,7 +15,6 @@ import { TransferFunds } from "./dto/transfer.dto";
 import { WithdrawFromWalletDto } from "./dto/withdraw.dto";
 import { User } from "../users/interface/user.interface";
 
-
 @Injectable()
 export class WalletService extends BaseService<Wallet> {
   constructor(
@@ -36,7 +35,11 @@ export class WalletService extends BaseService<Wallet> {
       user,
       wallet.currency
     );
-    const transaction = await this.createTransaction(payload.amount, user, data);
+    const transaction = await this.createTransaction(
+      payload.amount,
+      user,
+      data
+    );
     return { ...data, transactionId: transaction[0] };
   }
 
@@ -52,10 +55,7 @@ export class WalletService extends BaseService<Wallet> {
     return { message: "Transfer successful" };
   }
 
-  async withdrawFund(
-    payload: WithdrawFromWalletDto,
-    user: User
-  ) {
+  async withdrawFund(payload: WithdrawFromWalletDto, user: User) {
     const { amount } = payload;
     const wallet = await this.checkBalance(amount, user);
     const account = await this.verifyAccount(payload);
