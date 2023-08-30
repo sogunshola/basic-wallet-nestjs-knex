@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, Post, UseGuards } from "@nestjs/common";
 import { WalletService } from "./wallet.service";
 import { CurrentUser } from "../../shared/decorators/current-user.decorator";
 import { resolveResponse } from "../../shared/resolvers";
@@ -42,5 +42,10 @@ export class WalletController {
     return resolveResponse(
       this.walletService.withdrawFund(withdrawFromWallet, user)
     );
+  }
+
+  @Get("my-wallet")
+  getUserWallet(@CurrentUser() user: User) {
+    return resolveResponse(this.walletService.findUserWallet(user));
   }
 }
